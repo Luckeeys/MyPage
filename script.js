@@ -44,6 +44,8 @@ const buttons = document.querySelectorAll('.carousel-btn');
 if (track) {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let isAnimating = false;
+  const actionQueue = [];
+  const carouselWindow = track.parentElement;
 
   track.style.transition = prefersReducedMotion ? 'none' : 'transform 0.35s ease';
 
@@ -73,17 +75,84 @@ if (track) {
     card.setAttribute('aria-expanded', 'true');
   };
 
-  const rotateNext = () => {
+  const getVisibleCards = () => {
+    if (!carouselWindow) return [];
+
+    const windowRect = carouselWindow.getBoundingClientRect();
+    const minVisibleWidth = 48;
+
+    return Array.from(track.querySelectorAll('.skill-card')).filter((card) => {
+      const rect = card.getBoundingClientRect();
+      const visibleWidth = Math.min(rect.right, windowRect.right) - Math.max(rect.left, windowRect.left);
+      return visibleWidth >= minVisibleWidth;
+    });
+  };
+
+  const getPrincipalCard = () => {
+    if (!carouselWindow) return null;
+
+    const visibleCards = getVisibleCards();
+    if (!visibleCards.length) return null;
+
+    const centerX = carouselWindow.getBoundingClientRect().left + (carouselWindow.clientWidth / 2);
+    return visibleCards.reduce((closest, card) => {
+      if (!closest) return card;
+
+      const cardCenter = card.getBoundingClientRect().left + (card.clientWidth / 2);
+      const closestCenter = closest.getBoundingClientRect().left + (closest.clientWidth / 2);
+      const cardDistance = Math.abs(cardCenter - centerX);
+      const closestDistance = Math.abs(closestCenter - centerX);
+      return cardDistance < closestDistance ? card : closest;
+    }, null);
+  };
+
+  const setPrincipalExpanded = () => {
+    const principalCard = getPrincipalCard();
+    if (principalCard) {
+      expandCard(principalCard);
+    }
+  };
+
+  const processQueue = () => {
+    if (isAnimating || !actionQueue.length) return;
+    const nextAction = actionQueue.shift();
+    if (typeof nextAction === 'function') {
+      nextAction();
+    }
+  };
+
+  const enqueueAction = (action) => {
+    actionQueue.push(action);
+    processQueue();
+  };
+
+  const rotateNext = (onComplete) => {
     if (isAnimating) return;
 
     const step = getStepSize();
-    if (!step) return;
+    if (!step) {
+      if (typeof onComplete === 'function') {
+        onComplete();
+      }
+      processQueue();
+      return;
+    }
 
     const firstCard = track.firstElementChild;
-    if (!firstCard) return;
+    if (!firstCard) {
+      if (typeof onComplete === 'function') {
+        onComplete();
+      }
+      processQueue();
+      return;
+    }
 
     if (prefersReducedMotion) {
       track.appendChild(firstCard);
+      if (typeof onComplete === 'function') {
+        onComplete();
+      }
+      processQueue();
       return;
     }
 
@@ -99,22 +168,44 @@ if (track) {
       track.appendChild(firstCard);
       track.style.transform = 'translateX(0)';
       isAnimating = false;
+
+      if (typeof onComplete === 'function') {
+        onComplete();
+      }
+
+      processQueue();
     };
 
     track.addEventListener('transitionend', handleEnd);
   };
 
-  const rotatePrev = () => {
+  const rotatePrev = (onComplete) => {
     if (isAnimating) return;
 
     const step = getStepSize();
-    if (!step) return;
+    if (!step) {
+      if (typeof onComplete === 'function') {
+        onComplete();
+      }
+      processQueue();
+      return;
+    }
 
     const lastCard = track.lastElementChild;
-    if (!lastCard) return;
+    if (!lastCard) {
+      if (typeof onComplete === 'function') {
+        onComplete();
+      }
+      processQueue();
+      return;
+    }
 
     if (prefersReducedMotion) {
       track.insertBefore(lastCard, track.firstElementChild);
+      if (typeof onComplete === 'function') {
+        onComplete();
+      }
+      processQueue();
       return;
     }
 
@@ -136,6 +227,12 @@ if (track) {
       track.removeEventListener('transitionend', handleEnd);
       track.style.transition = 'none';
       isAnimating = false;
+
+      if (typeof onComplete === 'function') {
+        onComplete();
+      }
+
+      processQueue();
     };
 
     track.addEventListener('transitionend', handleEnd);
@@ -145,11 +242,13 @@ if (track) {
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
         const direction = button.dataset.direction === 'next' ? 1 : -1;
-        if (direction === 1) {
-          rotateNext();
-        } else {
-          rotatePrev();
-        }
+        enqueueAction(() => {
+          if (direction === 1) {
+            rotateNext(setPrincipalExpanded);
+          } else {
+            rotatePrev(setPrincipalExpanded);
+          }
+        });
       });
     });
   }
@@ -157,7 +256,29 @@ if (track) {
   track.addEventListener('click', (event) => {
     const targetCard = event.target.closest('.skill-card');
     if (!targetCard || !track.contains(targetCard)) return;
-    expandCard(targetCard);
+
+    const principalCard = getPrincipalCard();
+    if (!principalCard) return;
+
+    if (principalCard === targetCard) {
+      enqueueAction(() => {
+        expandCard(targetCard);
+        processQueue();
+      });
+      return;
+    }
+
+    const principalCenter = principalCard.getBoundingClientRect().left + (principalCard.clientWidth / 2);
+    const targetCenter = targetCard.getBoundingClientRect().left + (targetCard.clientWidth / 2);
+    const direction = targetCenter > principalCenter ? 1 : -1;
+
+    enqueueAction(() => {
+      if (direction === 1) {
+        rotateNext(setPrincipalExpanded);
+      } else {
+        rotatePrev(setPrincipalExpanded);
+      }
+    });
   });
 
   track.addEventListener('keydown', (event) => {
@@ -166,12 +287,37 @@ if (track) {
     const targetCard = event.target.closest('.skill-card');
     if (!targetCard || !track.contains(targetCard)) return;
 
+    const principalCard = getPrincipalCard();
+    if (!principalCard) return;
+
     event.preventDefault();
-    expandCard(targetCard);
+
+    if (principalCard === targetCard) {
+      enqueueAction(() => {
+        expandCard(targetCard);
+        processQueue();
+      });
+      return;
+    }
+
+    const principalCenter = principalCard.getBoundingClientRect().left + (principalCard.clientWidth / 2);
+    const targetCenter = targetCard.getBoundingClientRect().left + (targetCard.clientWidth / 2);
+    const direction = targetCenter > principalCenter ? 1 : -1;
+
+    enqueueAction(() => {
+      if (direction === 1) {
+        rotateNext(setPrincipalExpanded);
+      } else {
+        rotatePrev(setPrincipalExpanded);
+      }
+    });
   });
 
   window.addEventListener('resize', () => {
     track.style.transition = 'none';
     track.style.transform = 'translateX(0)';
+    setPrincipalExpanded();
   });
+
+  setPrincipalExpanded();
 }
