@@ -12,7 +12,7 @@
   --header-bg: rgba(255, 255, 255, 0.92);
   --card-bg: #fcfdff;
   --card-gradient: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
-  --accent-gradient: linear-gradient(45deg, #b30ac2 0%, #1f02fa 55%, #42cefc 100%);
+  --accent-gradient: linear-gradient(45deg, #f95bf6 0%, #532cf9 55%, #03f7eb 100%);
   scroll-padding-top: 120px;
 }
 
