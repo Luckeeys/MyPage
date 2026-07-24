@@ -192,80 +192,46 @@ body.theme-dark .theme-switch input:checked + .switch-slider {
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 34px;
-  height: 34px;
-  padding: 0;
-  overflow: hidden;
+  min-height: 34px;
+  padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: #3a3f46;
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid transparent;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+body.theme-light .download-icon-link {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: transparent;
 }
 
 body.theme-light .download-icon-link:hover,
 body.theme-light .download-icon-link:focus-visible {
-  background: #3a3f46;
-  border-color: #4b525b;
+  background: linear-gradient(var(--primary-soft), var(--primary-soft)) padding-box, var(--accent-gradient) border-box;
+  color: var(--primary);
+  border-color: transparent;
   box-shadow: 0 14px 28px rgba(var(--primary-rgb), 0.14), -6px 6px 14px rgba(179, 10, 194, 0.12), 6px -6px 14px rgba(31, 2, 250, 0.1);
 }
 
 body.theme-dark .download-icon-link {
   position: relative;
-  background: #ffffff;
-  border-color: var(--border);
+  background: #3a3f46;
+  border: 1px solid #4b525b;
+  color: #ffffff;
 }
 
 body.theme-dark .download-icon-link:hover,
 body.theme-dark .download-icon-link:focus-visible {
-  background: #ffffff;
-  border-color: var(--border);
+  background: linear-gradient(#3a3f46, #3a3f46) padding-box, var(--accent-gradient) border-box;
+  color: #ffffff;
+  border-color: transparent;
   box-shadow: 0 18px 36px rgba(66, 206, 252, 0.18), -8px 8px 18px rgba(179, 10, 194, 0.18), 8px -8px 18px rgba(31, 2, 250, 0.16);
-}
-
-.download-icon {
-  width: 112%;
-  height: 112%;
-  object-fit: cover;
-  display: block;
-  filter: brightness(0) invert(1);
-  transition: opacity 0.2s ease;
-}
-
-.download-icon-link::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.2s ease, background 0.2s ease;
-  -webkit-mask: url("Download.png") center / 112% 112% no-repeat;
-  mask: url("Download.png") center / 112% 112% no-repeat;
-  pointer-events: none;
-}
-
-body.theme-light .download-icon-link:hover .download-icon,
-body.theme-light .download-icon-link:focus-visible .download-icon {
-  opacity: 0;
-}
-
-body.theme-light .download-icon-link:hover::after,
-body.theme-light .download-icon-link:focus-visible::after {
-  opacity: 1;
-  background: var(--accent-gradient);
-}
-
-body.theme-dark .download-icon {
-  opacity: 0;
-}
-
-body.theme-dark .download-icon-link::after {
-  opacity: 1;
-  background: var(--bg);
-}
-
-body.theme-dark .download-icon-link:hover::after,
-body.theme-dark .download-icon-link:focus-visible::after {
-  background: var(--accent-gradient);
 }
 
 .eyebrow {

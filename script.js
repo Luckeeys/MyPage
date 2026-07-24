@@ -21,6 +21,11 @@ if (themeToggle) {
   });
 }
 
+document.querySelectorAll('#experiencia .info-link').forEach((link) => {
+  link.setAttribute('target', '_blank');
+  link.setAttribute('rel', 'noopener noreferrer');
+});
+
 const revealSections = document.querySelectorAll('.reveal-section');
 
 if ('IntersectionObserver' in window) {
