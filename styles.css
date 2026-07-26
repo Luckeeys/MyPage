@@ -776,18 +776,18 @@ body.theme-dark .footer-icon-link {
 }
 
 .footer-icon-link[href^="mailto:"]::after {
-  -webkit-mask: url("Email.png") center / cover no-repeat;
-  mask: url("Email.png") center / cover no-repeat;
+  -webkit-mask: url("assets/Email.png") center / cover no-repeat;
+  mask: url("assets/Email.png") center / cover no-repeat;
 }
 
 .footer-icon-link[href*="linkedin.com"]::after {
-  -webkit-mask: url("Linkedin.png") center / cover no-repeat;
-  mask: url("Linkedin.png") center / cover no-repeat;
+  -webkit-mask: url("assets/Linkedin.png") center / cover no-repeat;
+  mask: url("assets/Linkedin.png") center / cover no-repeat;
 }
 
 .footer-icon-link[href*="github.com"]::after {
-  -webkit-mask: url("Github.png") center / cover no-repeat;
-  mask: url("Github.png") center / cover no-repeat;
+  -webkit-mask: url("assets/Github.png") center / cover no-repeat;
+  mask: url("assets/Github.png") center / cover no-repeat;
 }
 
 body.theme-light .footer-icon-link:hover .footer-icon,
