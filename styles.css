@@ -535,6 +535,17 @@ body.theme-dark .skill-card.is-expanded[data-expanded-side="right"] {
   transition: transform 0.25s ease;
 }
 
+.skill-logo img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  display: block;
+}
+
+body.theme-dark .skill-logo img {
+  filter: brightness(0) invert(1);
+}
+
 .skill-card:hover .skill-logo,
 .skill-card.is-hovered .skill-logo,
 .skill-card.is-expanded .skill-logo {
