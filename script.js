@@ -258,6 +258,37 @@ if (track) {
     });
   }
 
+  let touchStartX = 0;
+  let touchStartY = 0;
+  const swipeThreshold = 44;
+
+  track.addEventListener('touchstart', (event) => {
+    if (!event.touches.length) return;
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+  }, { passive: true });
+
+  track.addEventListener('touchend', (event) => {
+    if (!event.changedTouches.length) return;
+
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      return;
+    }
+
+    enqueueAction(() => {
+      if (deltaX < 0) {
+        rotateNext(setPrincipalExpanded);
+      } else {
+        rotatePrev(setPrincipalExpanded);
+      }
+    });
+  }, { passive: true });
+
   track.addEventListener('click', (event) => {
     const targetCard = event.target.closest('.skill-card');
     if (!targetCard || !track.contains(targetCard)) return;

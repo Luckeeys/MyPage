@@ -634,35 +634,45 @@ body.theme-dark .skill-logo img {
 .info-link {
   text-decoration: none;
   color: inherit;
+  display: block;
+}
+
+#experiencia .info-item {
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.info-link:hover {
+#experiencia .info-item:hover,
+#experiencia .info-item:focus-within {
   border-color: var(--primary);
   box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.16);
   transform: translateY(-2px);
 }
 
-body.theme-light .info-link:hover,
-body.theme-light .info-link:focus-visible {
+body.theme-light #experiencia .info-item:hover,
+body.theme-light #experiencia .info-item:focus-within {
   background: linear-gradient(#ffffff, #ffffff) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 14px 28px rgba(var(--primary-rgb), 0.14), -6px 6px 14px rgba(179, 10, 194, 0.12), 6px -6px 14px rgba(31, 2, 250, 0.1);
 }
 
-body.theme-dark .info-link:hover,
-body.theme-dark .info-link:focus-visible {
+body.theme-dark #experiencia .info-item:hover,
+body.theme-dark #experiencia .info-item:focus-within {
   background: linear-gradient(#1f2329, #1f2329) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 18px 36px rgba(66, 206, 252, 0.18), -8px 8px 18px rgba(179, 10, 194, 0.18), 8px -8px 18px rgba(31, 2, 250, 0.16);
 }
 
 .info-link:focus-visible {
+  outline: none;
+}
+
+#experiencia .info-item:focus-within {
   outline: 2px solid var(--primary);
   outline-offset: 3px;
 }
 
-.info-item > div:first-child {
+.info-item > div:first-child,
+.info-item > a:first-child {
   flex: 0 0 280px;
   min-width: 280px;
 }
@@ -825,6 +835,7 @@ body.theme-dark .footer-icon-link:focus-visible::after {
   }
 
   .site-header-inner {
+    position: relative;
     grid-template-columns: 1fr auto;
     align-items: center;
   }
@@ -842,6 +853,9 @@ body.theme-dark .footer-icon-link:focus-visible::after {
   }
 
   .theme-switch {
+    position: absolute;
+    top: 0;
+    right: 0;
     justify-self: end;
   }
 
@@ -855,12 +869,13 @@ body.theme-dark .footer-icon-link:focus-visible::after {
   }
 
   .profile-photo-col {
-    align-items: flex-start;
+    width: 100%;
+    align-items: center;
   }
 
   .avatar {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
   }
 
   .skill-card {
@@ -869,5 +884,28 @@ body.theme-dark .footer-icon-link:focus-visible::after {
 
   .info-item {
     flex-direction: column;
+  }
+
+  #experiencia .info-item {
+    gap: 8px;
+  }
+
+  #experiencia .info-item > div:first-child {
+    flex: initial;
+    min-width: 0;
+  }
+
+  #experiencia .info-item > a:first-child {
+    flex: initial;
+    min-width: 0;
+  }
+
+  #formacao .info-item {
+    gap: 8px;
+  }
+
+  #formacao .info-item > div:first-child {
+    flex: initial;
+    min-width: 0;
   }
 }
