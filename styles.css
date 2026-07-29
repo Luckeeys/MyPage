@@ -874,8 +874,8 @@ body.theme-dark .footer-icon-link:focus-visible::after {
   }
 
   .avatar {
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
   }
 
   .skill-card {
