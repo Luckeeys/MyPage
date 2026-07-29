@@ -250,7 +250,6 @@ body.theme-light .download-icon-link {
 
 body.theme-light .download-icon-link:hover,
 body.theme-light .download-icon-link:focus-visible {
-  background: linear-gradient(var(--primary-soft), var(--primary-soft)) padding-box, var(--accent-gradient) border-box;
   color: var(--primary);
   border-color: transparent;
   box-shadow: 0 14px 28px rgba(var(--primary-rgb), 0.14), -6px 6px 14px rgba(179, 10, 194, 0.12), 6px -6px 14px rgba(31, 2, 250, 0.1);
@@ -265,7 +264,6 @@ body.theme-dark .download-icon-link {
 
 body.theme-dark .download-icon-link:hover,
 body.theme-dark .download-icon-link:focus-visible {
-  background: linear-gradient(#3a3f46, #3a3f46) padding-box, var(--accent-gradient) border-box;
   color: #ffffff;
   border-color: transparent;
   box-shadow: 0 18px 36px rgba(66, 206, 252, 0.18), -8px 8px 18px rgba(179, 10, 194, 0.18), 8px -8px 18px rgba(31, 2, 250, 0.16);
@@ -316,8 +314,12 @@ body.theme-light .section-block h3 {
   color: transparent;
 }
 
-body.theme-dark .profile-info h2 {
+.profile-info h2 {
   background: none;
+  color: #532cf9;
+}
+
+body.theme-dark .profile-info h2 {
   color: #42cefc;
 }
 
@@ -393,7 +395,6 @@ body.theme-light .section-nav .pill:focus-visible {
 
 body.theme-light .site-footer .pill:hover,
 body.theme-light .site-footer .pill:focus-visible {
-  background: linear-gradient(var(--primary-soft), var(--primary-soft)) padding-box, var(--accent-gradient) border-box;
   color: var(--primary);
   border-color: transparent;
   box-shadow: 0 14px 28px rgba(var(--primary-rgb), 0.14), -6px 6px 14px rgba(179, 10, 194, 0.12), 6px -6px 14px rgba(31, 2, 250, 0.1);
@@ -421,7 +422,6 @@ body.theme-dark .site-footer .pill {
 
 body.theme-dark .site-footer .pill:hover,
 body.theme-dark .site-footer .pill:focus-visible {
-  background: linear-gradient(#3a3f46, #3a3f46) padding-box, var(--accent-gradient) border-box;
   color: #ffffff;
   border-color: transparent;
   box-shadow: 0 18px 36px rgba(66, 206, 252, 0.18), -8px 8px 18px rgba(179, 10, 194, 0.18), 8px -8px 18px rgba(31, 2, 250, 0.16);
@@ -539,7 +539,6 @@ body.theme-dark .carousel-btn:focus-visible {
 body.theme-light .skill-card:hover:not(.is-expanded),
 body.theme-light .skill-card.is-hovered:not(.is-expanded),
 body.theme-light .skill-card:focus-visible:not(.is-expanded) {
-  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 14px 28px rgba(var(--primary-rgb), 0.14), -6px 6px 14px rgba(179, 10, 194, 0.12), 6px -6px 14px rgba(31, 2, 250, 0.1);
 }
@@ -547,7 +546,6 @@ body.theme-light .skill-card:focus-visible:not(.is-expanded) {
 body.theme-dark .skill-card:hover:not(.is-expanded),
 body.theme-dark .skill-card.is-hovered:not(.is-expanded),
 body.theme-dark .skill-card:focus-visible:not(.is-expanded) {
-  background: linear-gradient(135deg, #1f2329 0%, #171a1f 100%) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 18px 36px rgba(66, 206, 252, 0.2), -8px 8px 18px rgba(179, 10, 194, 0.16), 8px -8px 18px rgba(31, 2, 250, 0.14);
 }
@@ -561,13 +559,11 @@ body.theme-dark .skill-card:focus-visible:not(.is-expanded) {
 }
 
 body.theme-light .skill-card.is-expanded {
-  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 14px 28px rgba(var(--primary-rgb), 0.14), -6px 6px 14px rgba(179, 10, 194, 0.12), 6px -6px 14px rgba(31, 2, 250, 0.1);
 }
 
 body.theme-dark .skill-card.is-expanded {
-  background: linear-gradient(135deg, #1f2329 0%, #171a1f 100%) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 18px 36px rgba(66, 206, 252, 0.2), -8px 8px 18px rgba(179, 10, 194, 0.16), 8px -8px 18px rgba(31, 2, 250, 0.14);
 }
@@ -721,14 +717,12 @@ body.theme-dark .skill-logo img {
 
 body.theme-light #experiencia .info-item:hover,
 body.theme-light #experiencia .info-item:focus-within {
-  background: linear-gradient(#ffffff, #ffffff) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 14px 28px rgba(var(--primary-rgb), 0.14), -6px 6px 14px rgba(179, 10, 194, 0.12), 6px -6px 14px rgba(31, 2, 250, 0.1);
 }
 
 body.theme-dark #experiencia .info-item:hover,
 body.theme-dark #experiencia .info-item:focus-within {
-  background: linear-gradient(#1f2329, #1f2329) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 18px 36px rgba(66, 206, 252, 0.18), -8px 8px 18px rgba(179, 10, 194, 0.18), 8px -8px 18px rgba(31, 2, 250, 0.16);
 }
@@ -828,14 +822,12 @@ body.theme-dark #experiencia .info-item:focus-within {
 
 body.theme-light .footer-icon-link:hover,
 body.theme-light .footer-icon-link:focus-visible {
-  background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 14px 28px rgba(var(--primary-rgb), 0.14), -6px 6px 14px rgba(179, 10, 194, 0.12), 6px -6px 14px rgba(31, 2, 250, 0.1);
 }
 
 body.theme-dark .footer-icon-link:hover,
 body.theme-dark .footer-icon-link:focus-visible {
-  background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--accent-gradient) border-box;
   border-color: transparent;
   box-shadow: 0 18px 36px rgba(66, 206, 252, 0.18), -8px 8px 18px rgba(179, 10, 194, 0.18), 8px -8px 18px rgba(31, 2, 250, 0.16);
 }
@@ -857,7 +849,7 @@ body.theme-dark .footer-icon-link {
   border-color: #4b525b;
 }
 
-.footer-icon-link::after {
+.footer-icon-gradient {
   content: "";
   position: absolute;
   inset: 0;
@@ -865,19 +857,20 @@ body.theme-dark .footer-icon-link {
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
+  z-index: 1;
 }
 
-.footer-icon-link[href^="mailto:"]::after {
+.footer-icon-link[href^="mailto:"] .footer-icon-gradient {
   -webkit-mask: url("assets/Email.png") center / cover no-repeat;
   mask: url("assets/Email.png") center / cover no-repeat;
 }
 
-.footer-icon-link[href*="linkedin.com"]::after {
+.footer-icon-link[href*="linkedin.com"] .footer-icon-gradient {
   -webkit-mask: url("assets/Linkedin.png") center / cover no-repeat;
   mask: url("assets/Linkedin.png") center / cover no-repeat;
 }
 
-.footer-icon-link[href*="github.com"]::after {
+.footer-icon-link[href*="github.com"] .footer-icon-gradient {
   -webkit-mask: url("assets/Github.png") center / cover no-repeat;
   mask: url("assets/Github.png") center / cover no-repeat;
 }
@@ -889,11 +882,54 @@ body.theme-dark .footer-icon-link:focus-visible .footer-icon {
   opacity: 0;
 }
 
-body.theme-light .footer-icon-link:hover::after,
-body.theme-light .footer-icon-link:focus-visible::after,
-body.theme-dark .footer-icon-link:hover::after,
-body.theme-dark .footer-icon-link:focus-visible::after {
+body.theme-light .footer-icon-link:hover .footer-icon-gradient,
+body.theme-light .footer-icon-link:focus-visible .footer-icon-gradient,
+body.theme-dark .footer-icon-link:hover .footer-icon-gradient,
+body.theme-dark .footer-icon-link:focus-visible .footer-icon-gradient {
   opacity: 1;
+}
+
+.download-icon-link,
+.site-footer .pill,
+.skill-card,
+#experiencia .info-item,
+.footer-icon-link {
+  isolation: isolate;
+}
+
+.download-icon-link::before,
+.site-footer .pill::before,
+.skill-card::before,
+#experiencia .info-item::before,
+.footer-icon-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--accent-gradient);
+  clip-path: polygon(0% 100%, 0% 100%, 0% 100%, 0% 100%);
+  -webkit-mask: linear-gradient(#ffffff 0 0) content-box, linear-gradient(#ffffff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: clip-path 0.25s ease;
+  z-index: 2;
+}
+
+.download-icon-link:hover::before,
+.download-icon-link:focus-visible::before,
+.site-footer .pill:hover::before,
+.site-footer .pill:focus-visible::before,
+.skill-card:hover::before,
+.skill-card.is-hovered::before,
+.skill-card.is-expanded::before,
+.skill-card:focus-visible::before,
+#experiencia .info-item:hover::before,
+#experiencia .info-item:focus-within::before,
+.footer-icon-link:hover::before,
+.footer-icon-link:focus-visible::before {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 @media (max-width: 760px) {
