@@ -1,2 +1,0 @@
-# MyPage
-Meu curriculo web
