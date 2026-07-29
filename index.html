@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currículo | Seu Nome</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <img src="avatar.jpg" alt="Foto de perfil" class="avatar" />
+      <div>
+        <h1>Seu Nome</h1>
+        <p class="subtitle">Desenvolvedor | Área de Atuação</p>
+        <div class="contacts">
+          <a href="mailto:seuemail@email.com">📧 seuemail@email.com</a>
+          <a href="https://linkedin.com/in/seuperfil" target="_blank">💼 LinkedIn</a>
+          <a href="https://github.com/seuperfil" target="_blank">🐙 GitHub</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="sobre">
+      <h2>Sobre Mim</h2>
+      <p>
+        Escreva aqui um breve resumo sobre você: sua trajetória, motivações,
+        interesses profissionais e pessoais, e o que você busca na carreira.
+      </p>
+    </section>
+
+    <section id="experiencia">
+      <h2>Experiência Profissional</h2>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Cargo que você ocupou</h3>
+          <span class="period">Mês/Ano – Mês/Ano</span>
+        </div>
+        <p class="company">Nome da Empresa · Cidade, Estado</p>
+        <ul>
+          <li>Descreva uma responsabilidade ou conquista relevante.</li>
+          <li>Use verbos de ação no passado (desenvolveu, implementou, liderou…).</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Cargo anterior</h3>
+          <span class="period">Mês/Ano – Mês/Ano</span>
+        </div>
+        <p class="company">Nome da Empresa · Cidade, Estado</p>
+        <ul>
+          <li>Descreva uma responsabilidade ou conquista relevante.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section id="educacao">
+      <h2>Educação</h2>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Nome do Curso / Grau</h3>
+          <span class="period">Ano de Início – Ano de Conclusão</span>
+        </div>
+        <p class="company">Nome da Instituição</p>
+      </div>
+
+    </section>
+
+    <section id="habilidades">
+      <h2>Habilidades</h2>
+      <div class="skills">
+        <span class="skill">Habilidade 1</span>
+        <span class="skill">Habilidade 2</span>
+        <span class="skill">Habilidade 3</span>
+        <span class="skill">Habilidade 4</span>
+        <span class="skill">Habilidade 5</span>
+        <span class="skill">Habilidade 6</span>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <h2>Projetos</h2>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Nome do Projeto</h3>
+          <a href="https://github.com/seuperfil/projeto" target="_blank" class="link-btn">Ver no GitHub →</a>
+        </div>
+        <p>Breve descrição do projeto: objetivo, tecnologias utilizadas e impacto.</p>
+        <div class="skills">
+          <span class="skill">Tecnologia 1</span>
+          <span class="skill">Tecnologia 2</span>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="idiomas">
+      <h2>Idiomas</h2>
+      <ul>
+        <li><strong>Português</strong> – Nativo</li>
+        <li><strong>Inglês</strong> – Nível (Básico / Intermediário / Avançado / Fluente)</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Atualizado em <span id="update-date"></span></p>
+  </footer>
+
+  <script>
+    const d = new Date();
+    document.getElementById('update-date').textContent =
+      d.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+  </script>
+
+</body>
+</html>
