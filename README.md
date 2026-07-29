@@ -8,7 +8,7 @@
 
 ## Sobre o projeto
 
-O **MyPage AI** é o currículo web de Lucas Cipriano, desenvolvedor Full Stack especializado em soluções de Contact Center e no ecossistema Genesys. Em vez de uma página estática, o projeto organiza a trajetória profissional como uma experiência visual: tecnologias, experiências, certificações e formação em uma interface clara, responsiva e interativa.
+O **MyPage** é o currículo web de Lucas Cipriano, desenvolvedor Full Stack especializado em soluções de Contact Center e no ecossistema Genesys. Em vez de uma página estática, o projeto organiza a trajetória profissional como uma experiência visual: tecnologias, experiências, certificações e formação em uma interface clara, responsiva e interativa.
 
 O resultado combina a objetividade de um currículo com os detalhes de uma aplicação front-end: tema claro e escuro, navegação fluida, carrossel de competências e microinterações que dão ritmo à leitura.
 
