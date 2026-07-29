@@ -1,5 +1,8 @@
 const body = document.body;
 const themeToggle = document.getElementById('themeToggle');
+const colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+const getSystemTheme = () => (colorSchemeMediaQuery.matches ? 'dark' : 'light');
 
 const applyTheme = (theme) => {
   const isDark = theme === 'dark';
@@ -11,14 +14,34 @@ const applyTheme = (theme) => {
   localStorage.setItem('profile-theme', theme);
 };
 
-const savedTheme = localStorage.getItem('profile-theme') || 'light';
-applyTheme(savedTheme);
+const getInitialTheme = () => {
+  const savedTheme = localStorage.getItem('profile-theme');
+  if (savedTheme === 'dark' || savedTheme === 'light') {
+    return savedTheme;
+  }
+
+  return getSystemTheme();
+};
+
+applyTheme(getInitialTheme());
 
 if (themeToggle) {
   themeToggle.addEventListener('change', () => {
     const nextTheme = themeToggle.checked ? 'dark' : 'light';
     applyTheme(nextTheme);
   });
+}
+
+const updateThemeFromSystem = (event) => {
+  if (!localStorage.getItem('profile-theme')) {
+    applyTheme(event.matches ? 'dark' : 'light');
+  }
+};
+
+if (typeof colorSchemeMediaQuery.addEventListener === 'function') {
+  colorSchemeMediaQuery.addEventListener('change', updateThemeFromSystem);
+} else if (typeof colorSchemeMediaQuery.addListener === 'function') {
+  colorSchemeMediaQuery.addListener(updateThemeFromSystem);
 }
 
 document.querySelectorAll('#experiencia .info-link').forEach((link) => {
