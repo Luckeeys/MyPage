@@ -366,7 +366,7 @@ body.theme-dark .cert-card h5 {
   background: var(--accent-gradient);
   z-index: -2;
   clip-path: polygon(0% 100%, 0% 100%, 0% 100%, 0% 100%);
-  transition: clip-path 0.25s ease;
+  transition: clip-path 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .section-nav .pill::after {
@@ -464,6 +464,8 @@ body.theme-dark .site-footer .pill:focus-visible {
 }
 
 .carousel-btn {
+  position: relative;
+  isolation: isolate;
   border: 1px solid transparent;
   width: 40px;
   height: 40px;
@@ -474,9 +476,32 @@ body.theme-dark .site-footer .pill:focus-visible {
   font-size: 1.1rem;
 }
 
+.carousel-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--accent-gradient);
+  clip-path: circle(0% at 50% 50%);
+  pointer-events: none;
+  transition: clip-path 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 0;
+}
+
+.carousel-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.carousel-btn:hover span,
+.carousel-btn:focus-visible span {
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(15, 23, 42, 0.8), 0 0 3px rgba(15, 23, 42, 0.5);
+}
+
 body.theme-light .carousel-btn:hover,
 body.theme-light .carousel-btn:focus-visible {
-  background: var(--accent-gradient);
   border-color: transparent;
   box-shadow: 0 14px 28px rgba(var(--primary-rgb), 0.14), -6px 6px 14px rgba(179, 10, 194, 0.12), 6px -6px 14px rgba(31, 2, 250, 0.1);
   color: #ffffff;
@@ -490,10 +515,14 @@ body.theme-dark .carousel-btn {
 
 body.theme-dark .carousel-btn:hover,
 body.theme-dark .carousel-btn:focus-visible {
-  background: var(--accent-gradient);
   border-color: transparent;
   box-shadow: 0 18px 36px rgba(66, 206, 252, 0.18), -8px 8px 18px rgba(179, 10, 194, 0.18), 8px -8px 18px rgba(31, 2, 250, 0.16);
   color: #ffffff;
+}
+
+.carousel-btn:hover::before,
+.carousel-btn:focus-visible::before {
+  clip-path: circle(75% at 50% 50%);
 }
 
 .carousel-track {
@@ -854,8 +883,8 @@ body.theme-dark .footer-icon-link {
   position: absolute;
   inset: 0;
   background: var(--accent-gradient);
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 0.3s cubic-bezier(0.65, 0, 0.35, 1);
   pointer-events: none;
   z-index: 1;
 }
@@ -875,18 +904,11 @@ body.theme-dark .footer-icon-link {
   mask: url("assets/Github.png") center / cover no-repeat;
 }
 
-body.theme-light .footer-icon-link:hover .footer-icon,
-body.theme-light .footer-icon-link:focus-visible .footer-icon,
-body.theme-dark .footer-icon-link:hover .footer-icon,
-body.theme-dark .footer-icon-link:focus-visible .footer-icon {
-  opacity: 0;
-}
-
 body.theme-light .footer-icon-link:hover .footer-icon-gradient,
 body.theme-light .footer-icon-link:focus-visible .footer-icon-gradient,
 body.theme-dark .footer-icon-link:hover .footer-icon-gradient,
 body.theme-dark .footer-icon-link:focus-visible .footer-icon-gradient {
-  opacity: 1;
+  clip-path: circle(75% at 50% 50%);
 }
 
 .download-icon-link,
@@ -913,7 +935,7 @@ body.theme-dark .footer-icon-link:focus-visible .footer-icon-gradient {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: clip-path 0.25s ease;
+  transition: clip-path 0.3s cubic-bezier(0.65, 0, 0.35, 1);
   z-index: 2;
 }
 
