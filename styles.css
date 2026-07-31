@@ -828,9 +828,34 @@ body.theme-dark #experiencia .info-item:focus-within {
   max-width: 980px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.footer-copyright {
+  position: absolute;
+  left: 0;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.footer-contacts {
+  display: flex;
   gap: 10px;
-  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-copyright {
+    position: static;
+  }
 }
 
 .footer-icon-link {
@@ -866,7 +891,12 @@ body.theme-dark .footer-icon-link:focus-visible {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.5s ease;
+}
+
+.footer-icon-link:hover .footer-icon,
+.footer-icon-link:focus-visible .footer-icon {
+  opacity: 0;
 }
 
 body.theme-dark .footer-icon {
@@ -884,7 +914,7 @@ body.theme-dark .footer-icon-link {
   inset: 0;
   background: var(--accent-gradient);
   clip-path: circle(0% at 50% 50%);
-  transition: clip-path 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: clip-path 0.5s cubic-bezier(0.65, 0, 0.35, 1);
   pointer-events: none;
   z-index: 1;
 }
