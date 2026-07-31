@@ -855,6 +855,11 @@ body.theme-dark #experiencia .info-item:focus-within {
 
   .footer-copyright {
     position: static;
+    order: 1;
+  }
+
+  .footer-contacts {
+    order: 0;
   }
 }
 
@@ -997,6 +1002,7 @@ body.theme-dark .footer-icon-link:focus-visible .footer-icon-gradient {
     position: relative;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    row-gap: 0;
   }
 
   .contact-pill-row {
